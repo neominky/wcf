@@ -197,6 +197,18 @@ namespace System.ServiceModel.Channels
                 if (_channelFactory.MessageEncoderFactory is BinaryMessageEncoderFactory)
                 {
                     headers[WebSocketTransportSettings.BinaryEncoderTransferModeHeader] = _channelFactory.TransferMode.ToString();
+
+                    switch (binaryMessageEncoderFactory.CompressionFormat)
+                    {
+                        case CompressionFormat.GZip:
+                            headers[WebSocketTransportSettings.AcceptEncoding] = MessageEncoderCompressionHandler.GZipContentEncoding;
+                            break;
+                        case CompressionFormat.Deflate:
+                            headers[WebSocketTransportSettings.AcceptEncoding] = MessageEncoderCompressionHandler.DeflateContentEncoding;
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 if (HttpChannelFactory<IDuplexSessionChannel>.MapIdentity(RemoteAddress, _channelFactory.AuthenticationScheme))
                 {
