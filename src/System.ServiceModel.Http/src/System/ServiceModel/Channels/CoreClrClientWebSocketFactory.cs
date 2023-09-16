@@ -17,6 +17,8 @@ namespace System.ServiceModel.Channels
         {
             ClientWebSocket webSocket = new ClientWebSocket();
             webSocket.Options.Credentials = credentials;
+            webSocket.Options.RemoteCertificateValidationCallback = System.Net.ServicePointManager.ServerCertificateValidationCallback;
+
             if (!string.IsNullOrEmpty(settings.SubProtocol))
             {
                 webSocket.Options.AddSubProtocol(settings.SubProtocol);

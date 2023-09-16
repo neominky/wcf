@@ -19,6 +19,7 @@ namespace System.ServiceModel.Channels
         internal const string WebSocketMethod = "WEBSOCKET";
         internal const string SoapSubProtocol = "soap";
         internal const string TransportUsageMethodName = "TransportUsage";
+        internal const string AcceptEncoding = "Accept-Encoding";
 
         private WebSocketTransportUsage _transportUsage;
         private TimeSpan _keepAliveInterval;
