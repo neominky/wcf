@@ -194,7 +194,7 @@ namespace System.ServiceModel.Channels
                 }
                 var headers = new WebHeaderCollection();
                 headers[WebSocketTransportSettings.SoapContentTypeHeader] = _channelFactory.WebSocketSoapContentType;
-                if (_channelFactory.MessageEncoderFactory is BinaryMessageEncoderFactory)
+                if (_channelFactory.MessageEncoderFactory is BinaryMessageEncoderFactory binaryMessageEncoderFactory)
                 {
                     headers[WebSocketTransportSettings.BinaryEncoderTransferModeHeader] = _channelFactory.TransferMode.ToString();
 
